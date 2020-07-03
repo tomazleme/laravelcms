@@ -53,11 +53,11 @@ class LoginController extends Controller
          ]);
       $validator = $this->validator($data);
 
-         if($validator)->fails()) {
+          if($validator)->fails() {
              return redirect()->route('login')
              ->withErrors($validator)
              ->withInput();
-         }
+        }
          if(Auth::attempt($data)) {
                 return redirect()->route('admin');
            }else {
@@ -68,7 +68,7 @@ class LoginController extends Controller
     }
     public function logout() {
       Auth::logout();
-      return redirect()->route('auth.login');
+      return redirect()->route('login');
 
     }
     protected function validator(array $data) {
